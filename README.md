@@ -11,15 +11,6 @@ Full project files including SQL scripts, Python Jupyter notebook, charts, and d
 [Google Drive — Project Folder](https://drive.google.com/drive/folders/18jmziDn28voxKRFz1ipN2w72HsvxqMe2?usp=sharing)
 ```
 
----
-
-**So the bottom of your README has two separate sections:**
-```
-Data Source    → Kaggle dataset link
-Project Files  → Your Google Drive folder link
-
----
-
 ## Business Problem
 
 The leadership at Olist had decided to remove sellers with average rating of 2 and below out 5 if 
