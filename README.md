@@ -10,7 +10,7 @@
 
 Full project files including SQL scripts, Python Jupyter notebook, charts, and documentation are available here:
 
-**[📂 Google Drive — Project Folder](https://drive.google.com/drive/folders/18jmziDn28voxKRFz1ipN2w72HsvxqMe2?usp=sharing)**
+**[📂 Google Drive — Project Folder](https://drive.google.com/drive/folders/1HGQpjsssi0AhxJSbu-HfzVp2hljxmtI9?usp=sharing)**
 
 ---
 
