@@ -1,7 +1,7 @@
 # 🛡️ OLIST Seller Removal Defence Analytics
 
 > A data-driven investigation challenging a seller removal decision on the Olist
-> e-commerce platform — uncovering dispatch delays, not product quality,
+> e-commerce platform — uncovering seller's dispatch delays, not product quality nor carrier delays
 > as the true root cause of low customer ratings.
 
 ---
@@ -105,3 +105,93 @@ Do not remove the seller. Implement a **dispatch time improvement plan**:
 ---
 
 ## 🗂️ Project Structure
+```
+olist-seller-removal-defence-analytics/
+    ├── dashboards/                          ← Chart outputs
+    │     ├── delivery_vs_rating.png
+    │     ├── seller_vs_platform.png
+    │     └── wordcloud.png
+    ├── scripts/                             ← Python files
+    │     ├── db_connection.py
+    │     └── seller_analysis.ipynb
+    ├── 01-raw-schema.sql                    ← Raw table creation
+    ├── 02-core-schema.sql                   ← Core schema and inserts
+    ├── 03-views.sql                         ← Analytical views
+    ├── 04-analysis.sql                      ← Analysis queries
+    ├── requirements.txt                     ← Python dependencies
+    └── .gitignore
+```
+
+---
+
+## 🏗️ Data Architecture
+
+The project follows a **raw to core pipeline** built on a **dimensional model (star schema)**:
+
+| Layer | Description |
+|---|---|
+| Raw Schema | 9 CSV tables loaded as TEXT — no constraints |
+| Core Schema | Proper data types, primary keys, foreign keys enforced |
+| Views | Layered analytical views — separation of concerns |
+| Python | Visualisation only — all logic handled in SQL |
+
+**Star schema:** 5 dimension tables + 4 fact tables
+
+---
+
+## 🛠️ Tools & Technologies
+
+| Tool | Purpose |
+|---|---|
+| PostgreSQL | Database — raw and core schemas, dimensional model, views |
+| pgAdmin | SQL editor and database management |
+| Python 3.13 | Visualisation and text analysis |
+| pandas | Loading SQL results into DataFrames |
+| matplotlib & seaborn | Charts and visualisations |
+| wordcloud | Word cloud of customer review comments |
+| deep-translator | Translating Portuguese comments to English |
+| VS Code + Jupyter | Development environment |
+
+---
+
+## ▶️ How to Run
+
+**1. Set up the database**
+
+Run the SQL files in order in PostgreSQL:
+```
+01-raw-schema.sql      # Create raw tables and load CSVs
+02-core-schema.sql     # Create core tables and insert data
+03-views.sql           # Create analytical views
+04-analysis.sql        # Run analysis queries
+```
+
+**2. Set up Python environment**
+```
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+**3. Configure database connection**
+
+Update `scripts/db_connection.py` with your PostgreSQL credentials.
+
+**4. Run the notebook**
+
+Open `scripts/seller_analysis.ipynb` in VS Code and run all cells.
+
+---
+
+## 📦 Data Source
+
+[Brazilian E-Commerce Public Dataset by Olist — Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
+
+---
+
+## ⚠️ Limitations
+
+- The seller has only 14 orders — a larger volume would strengthen statistical significance
+- Geolocation coordinates are based on zip code prefixes — approximate, not exact addresses
+- Review comments were machine translated from Portuguese — minor inaccuracies may exist
+- Analysis covers one specific seller — findings may not generalise to all low-rated sellers
